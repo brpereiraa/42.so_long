@@ -6,13 +6,13 @@
 #    By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 09:44:26 by brunolopes        #+#    #+#              #
-#    Updated: 2023/06/22 09:56:49 by brunolopes       ###   ########.fr        #
+#    Updated: 2023/06/22 10:14:54 by brunolopes       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 RM = rm -fr
 
@@ -22,7 +22,7 @@ OBJS = ${SRCS:.c=.o}
 
 ${NAME}: ${OBJS}
 		${MAKE} -C ./libft
-		cp libft/libft.a
+		cp libft/libft.a .
 		${MAKE} -C ./mlx
 		${CC} ${OBJS} libft.a ${MLXFLAGS} -o ${NAME}
 
@@ -41,4 +41,4 @@ re: fclean all
 
 .PHONY: all clear fclean re
 
-.SILENT: all clean  fclean re ${NAME}S
+.SILENT: all clean  fclean re ${NAME}
