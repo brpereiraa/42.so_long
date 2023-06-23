@@ -6,7 +6,7 @@
 #    By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 09:44:26 by brunolopes        #+#    #+#              #
-#    Updated: 2023/06/22 10:14:54 by brunolopes       ###   ########.fr        #
+#    Updated: 2023/06/23 10:37:12 by brunolopes       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,17 @@ SRCS = src/main.c
 OBJS = ${SRCS:.c=.o}
 
 ${NAME}: ${OBJS}
-		${MAKE} -C ./libft
+		${MAKE} --no-print-directory -C ./libft
 		cp libft/libft.a .
-		${MAKE} -C ./mlx
+		${MAKE} --no-print-directory -C ./mlx
 		${CC} ${OBJS} libft.a ${MLXFLAGS} -o ${NAME}
 
 clean:
-	${MAKE} clean -C ./libft
+	${MAKE} --no-print-directory clean -C ./libft
 	rm -fr ${OBJS}
 
 fclean: clean
-		${MAKE} fclean -C ./libft
+		${MAKE} fclean --no-print-directory -C ./libft
 		rm -fr libft.a
 		rm -fr ${NAME}
 
