@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/06/23 10:58:38 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/06/23 11:32:54 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	close_window(int keycode, t_vars *vars)
+inline int	close_window(void)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 int	main(void)
@@ -51,6 +50,6 @@ int	main(void)
 	my_mlx_pixel_put(&img, 6, 9, 0x00FF0000);
 	my_mlx_pixel_put(&img, 6, 10, 0x00FF0000);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 17, 1L<<17, close_window, &vars);
+	mlx_hook(vars.win, 17, 1L << 2, close_window, &vars);
 	mlx_loop(vars.mlx);
 }
