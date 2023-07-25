@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+         #
+#    By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 09:44:26 by brunolopes        #+#    #+#              #
-#    Updated: 2023/06/23 10:37:12 by brunolopes       ###   ########.fr        #
+#    Updated: 2023/07/25 12:02:37 by brpereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,4 +41,4 @@ re: fclean all
 
 .PHONY: all clear fclean re
 
-.SILENT: all clean  fclean re ${NAME}
+.SILENT:
