@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/07/25 12:16:24 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:18:35 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../mlx/mlx_int.h"
 # include "./key_map.h"
 # include "./assets.h"
+# include "../libft/libft.h"
 # include <X11/X.h>
 # include <fcntl.h>
 
@@ -34,5 +35,10 @@ typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
+
+typedef struct s_game {
+	size_t rows;
+	size_t columns;
+}				t_game;
 
 #endif
