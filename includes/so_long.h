@@ -39,6 +39,7 @@ typedef struct	s_vars {
 typedef struct s_game {
 	size_t rows;
 	size_t columns;
+	char	**map;
 }				t_game;
 
 #endif
