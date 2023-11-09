@@ -24,7 +24,7 @@ int key_handler(int keycode)
 	return (0);
 }
 
-size_t rows_size(char *map)
+void rows_size(t_game **game)
 {
 	size_t	size;
 	int		fd;
@@ -36,7 +36,7 @@ size_t rows_size(char *map)
 	if (size == 0)
 		return (0);
 	close(fd);
-	return (size);
+	(*game)->rows = size;
 }
 
 // int verify_map(char *map)
@@ -77,6 +77,7 @@ size_t rows_size(char *map)
 // 	mlx_hook(vars.win, 2, 1L << 0, key_handler, &vars);
 // 	mlx_loop(vars.mlx);
 // }
+
 void read_map(int fd, t_game **game)
 {
 	int	i;
