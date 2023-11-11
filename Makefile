@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+         #
+#    By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 09:44:26 by brunolopes        #+#    #+#              #
-#    Updated: 2023/07/25 16:43:11 by brpereir         ###   ########.fr        #
+#    Updated: 2023/10/31 19:52:56 by brunolopes       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = #-Wall -Wextra -Werror
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 RM = rm -fr
 
-SRCS = src/main.c
+SRCS = src/main.c src/map.c
 
 OBJS = ${SRCS:.c=.o}
 

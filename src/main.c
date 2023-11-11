@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/09/05 17:38:39 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:11:30 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,6 @@ int key_handler(int keycode)
 	if(keycode == ESC)
 		exit(EXIT_SUCCESS);
 	return (0);
-}
-
-size_t rows_size(char *map)
-{
-	size_t	size;
-	int		fd;
-
-	size = 0;
-	fd = open(map, O_RDONLY);
-	while(get_next_line(fd))
-		size++;
-	if (size == 0)
-		return (0);
-	close(fd);
-	return (size);
 }
 
 // int verify_map(char *map)
@@ -82,19 +67,30 @@ void read_map(int fd, t_game **game)
 	int	i;
 
 	i = -1;
-	while(++i < 5)
-	{
+	
+	(*game)->map = (char **)malloc((sizeof(char *) * 5) + 1);
+	while(++i < 6)
 		(*game)->map[i] = get_next_line(fd);
-	}
 }
 
 int main(void)
 {
 	t_game *game;
 	int	fd;
+	int i = -1;
 
-	fd = open("../maps/map1.ber", O_RDONLY);	
+	game = (t_game *)malloc(sizeof(t_game));
+    if (game == NULL) {
+        return 0;
+    }
+	game->columns = 0;
+	char *miguel = malloc(sizeof(char) * 5);
+	fd = open("./maps/map1.ber", O_RDONLY);	
 	read_map(fd, &game);
+	close(fd);
+	fd = open("./maps/map1.ber", O_RDONLY);
+	ft_check_cols(&game, fd);
+	printf("%li", game->columns);
 
 	return 0;
 }
