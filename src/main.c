@@ -3,40 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/11 16:15:56 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/11 19:38:28 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	close_window(void)
-{
-	exit(EXIT_SUCCESS);
-}
-
-int key_handler(int keycode)
-{
-	if(keycode == ESC)
-		exit(EXIT_SUCCESS);
-	return (0);
-}
-
 void rows_size(t_game **game)
 {
-	size_t	size;
 	int		fd;
 
-	size = 0;
-	fd = open(map, O_RDONLY);
+	(*game)->rows = 0;
+	fd = open("./maps/map1.ber", O_RDONLY);
 	while(get_next_line(fd))
-		size++;
-	if (size == 0)
-		return (0);
+		(*game)->rows++;
 	close(fd);
-	(*game)->rows = size;
 }
 
 // int verify_map(char *map)
@@ -78,16 +62,15 @@ void rows_size(t_game **game)
 // 	mlx_loop(vars.mlx);
 // }
 
-void read_map(int fd, t_game **game)
+static void print_map(t_game *game)
 {
 	int	i;
 
 	i = -1;
-	
-	(*game)->map = (char **)malloc((sizeof(char *) * 5) + 1);
-	while(++i < 6)
-		(*game)->map[i] = get_next_line(fd);
+	while(game->map[++i])
+		ft_printf("Line %i: %s", i, game->map[i]);	
 }
+
 
 int main(void)
 {
@@ -96,17 +79,15 @@ int main(void)
 	int i = -1;
 
 	game = (t_game *)malloc(sizeof(t_game));
-    if (game == NULL) {
-        return 0;
-    }
+    if (game == NULL) 
+        return (-1);
 	game->columns = 0;
-	char *miguel = malloc(sizeof(char) * 5);
-	fd = open("./maps/map1.ber", O_RDONLY);	
-	read_map(fd, &game);
-	close(fd);
-	fd = open("./maps/map1.ber", O_RDONLY);
+	fd = open("./maps/map2.ber", O_RDONLY);
 	ft_check_cols(&game, fd);
-	printf("%li", game->columns);
+	close(fd);
+	fd = open("./maps/map2.ber", O_RDONLY);	
+	read_map(fd, &game);
+	print_map(game);
 
-	return 0;
+	return (0);
 }

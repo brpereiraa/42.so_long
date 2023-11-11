@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/10/31 19:51:21 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/11 19:38:11 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct s_game {
 	char	**map;
 }				t_game;
 
-void ft_check_cols(t_game **game, int fd);	
+void ft_check_cols(t_game **game, int fd);
+int	close_window(void);
+int key_handler(int keycode);
+void read_map(int fd, t_game **game)
+
 
 #endif
