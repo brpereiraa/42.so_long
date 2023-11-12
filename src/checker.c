@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/11/11 17:14:34 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:11:17 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int shape_check(t_game *game)
     int i;
 
     i = -1;
-    size = 0;
-    while(game->map[-1])
+    size = -1;
+    while(game->map[++i])
     {
-        if (ft_strlen(game->map[i]) != size && size != 0)
+        if (ft_strlen(game->map[i]) != size && size != -1)
             return (1);
         size = ft_strlen(game->map[i]);
     }
@@ -36,6 +36,9 @@ static int point_checker(t_game *game)
     int exits;
     int start;
 
+    collectibles = 0;
+    exits = 0;
+    start = 0;
     i = -1;
     while(game->map[++i])
     {
@@ -57,8 +60,8 @@ static int point_checker(t_game *game)
 
 void map_verifications(t_game *game)
 {
-    if (!shape_check(game))
+    if (shape_check(game))
         ft_printf("Error\nMap is not a rectangle\n");
-    if (!point_checker(game))
+    if (point_checker(game))
         ft_printf("Error\nMap is missing a point\n");
 }

@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/11 19:38:28 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:12:22 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@
 // 	mlx_loop(vars.mlx);
 // }
 
-static void map_init(t_game **game)
+static void map_init(t_game **game, char **argv)
 {
-	game = (t_game *)malloc(sizeof(t_game));
+	*game = (t_game *)malloc(sizeof(t_game));
 	if (game == NULL) 
-		return (-1);
-	cols_size(&game, argv[1]);
-	rows_size(&game, argv[1]);
-	read_map(&game, argv[1]);
+		return ;
+	cols_size(game, argv[1]);
+	rows_size(game, argv[1]);
+	read_map(game, argv[1]);
 }
 
 static void print_map(t_game *game)
@@ -54,20 +54,7 @@ static void print_map(t_game *game)
 
 	i = -1;
 	while(game->map[++i])
-		ft_printf("Line %i: %s", i, game->map[i]);	
-}
-
-static void project_tester(t_game **game)
-{
-	//Check number of cols
-	printf("Columns: %zu\n", (*game)->columns);
-	//Check number of rows
-	printf("Rows: %zu\n", (*game)->rows);
-	//Check for missing characters and map shape
-	map_verifications(*game);
-	//Check if map is trimmed 
-	print_map(game);
-
+		ft_printf("Line %i: %s\n", i, game->map[i]);
 }
 
 int main(int argc, char **argv)
@@ -77,7 +64,7 @@ int main(int argc, char **argv)
 
 	if(argc != 2)
 		return (0);
-	map_init(&game);
+	map_init(&game, argv);
 	project_tester(&game);
 	return (0);
 }

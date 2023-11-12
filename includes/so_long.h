@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/11 19:38:11 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:31:46 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_game {
 
 int		close_window(void);
 int		key_handler(int keycode);
-void	read_map(int fd, t_game **game);
+void	read_map(t_game **game, char *map);
 void	cols_size(t_game **game, char *map);
 void	rows_size(t_game **game, char *map);
 void 	map_verifications(t_game *game);

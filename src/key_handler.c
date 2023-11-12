@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/11/11 19:34:56 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:33:34 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int key_handler(int keycode)
 	else if (keycode == S || keycode == DOWN)
 		printf("DOWN\n");
 	else if (keycode == D || keycode == RIGHT)
-		printf("RIGHT\n"
+		printf("RIGHT\n");
 	return (0);
 }
