@@ -12,12 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void ft_check_cols(t_game **game, int fd)
-{
-	while(get_next_line(fd))
-		(*game)->columns++;
-} 
-void map_trim(t_game **game)
+static void map_trim(t_game **game)
 {
     int i;
     int j;
@@ -31,12 +26,38 @@ void map_trim(t_game **game)
     }
 }
 
-void read_map(int fd, t_game **game)
+void read_map(t_game **game, char *map)
 {
 	int	i;
+    int fd;
 
+    fd = open(map, O_RDONLY);
 	i = -1;
 	(*game)->map = (char **)malloc((sizeof(char *) * (*game)->columns) + 1);
 	while(++i < (*game)->columns)
 		(*game)->map[i] = get_next_line(fd);
+    close(fd);
+    map_trim(game);
+}
+
+void cols_size(t_game **game, char *map)
+{
+	int	fd;
+
+	fd = open(map, O_RDONLY);
+	game->columns = 0;
+	while(get_next_line(fd))
+		(*game)->columns++;
+	close(fd);
+} 
+
+void rows_size(t_game **game, char *map)
+{
+	int		fd;
+
+	(*game)->rows = 0;
+	fd = open(map, O_RDONLY);
+	while(get_next_line(fd))
+		(*game)->rows++;
+	close(fd);
 }

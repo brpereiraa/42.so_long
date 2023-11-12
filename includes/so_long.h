@@ -42,10 +42,11 @@ typedef struct s_game {
 	char	**map;
 }				t_game;
 
-void ft_check_cols(t_game **game, int fd);
-int	close_window(void);
-int key_handler(int keycode);
-void read_map(int fd, t_game **game)
-
+int		close_window(void);
+int		key_handler(int keycode);
+void	read_map(int fd, t_game **game);
+void	cols_size(t_game **game, char *map);
+void	rows_size(t_game **game, char *map);
+void 	map_verifications(t_game *game);
 
 #endif

@@ -21,5 +21,13 @@ int key_handler(int keycode)
 {
 	if(keycode == ESC)
 		exit(EXIT_SUCCESS);
+	else if (keycode == W || keycode == UP)
+		printf("UP\n");
+	else if (keycode == A || keycode == LEFT)
+		printf("LEFT\n");
+	else if (keycode == S || keycode == DOWN)
+		printf("DOWN\n");
+	else if (keycode == D || keycode == RIGHT)
+		printf("RIGHT\n"
 	return (0);
 }

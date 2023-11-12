@@ -12,30 +12,6 @@
 
 #include "../includes/so_long.h"
 
-void rows_size(t_game **game)
-{
-	int		fd;
-
-	(*game)->rows = 0;
-	fd = open("./maps/map1.ber", O_RDONLY);
-	while(get_next_line(fd))
-		(*game)->rows++;
-	close(fd);
-}
-
-// int verify_map(char *map)
-// {
-// 	size_t	size;
-// 	int		fd;
-
-// 	size = -1;
-// 	fd = open(map, O_RDONLY);
-// 	while(size == -1 || size == get_next_line(fd))
-// 	{
-		
-// 	}
-// }
-
 // int	main(void)
 // {
 // 	void	*mlx;
@@ -62,6 +38,16 @@ void rows_size(t_game **game)
 // 	mlx_loop(vars.mlx);
 // }
 
+static void map_init(t_game **game)
+{
+	game = (t_game *)malloc(sizeof(t_game));
+	if (game == NULL) 
+		return (-1);
+	cols_size(&game, argv[1]);
+	rows_size(&game, argv[1]);
+	read_map(&game, argv[1]);
+}
+
 static void print_map(t_game *game)
 {
 	int	i;
@@ -71,23 +57,27 @@ static void print_map(t_game *game)
 		ft_printf("Line %i: %s", i, game->map[i]);	
 }
 
-
-int main(void)
+static void project_tester(t_game **game)
 {
-	t_game *game;
-	int	fd;
-	int i = -1;
-
-	game = (t_game *)malloc(sizeof(t_game));
-    if (game == NULL) 
-        return (-1);
-	game->columns = 0;
-	fd = open("./maps/map2.ber", O_RDONLY);
-	ft_check_cols(&game, fd);
-	close(fd);
-	fd = open("./maps/map2.ber", O_RDONLY);	
-	read_map(fd, &game);
+	//Check number of cols
+	printf("Columns: %zu\n", (*game)->columns);
+	//Check number of rows
+	printf("Rows: %zu\n", (*game)->rows);
+	//Check for missing characters and map shape
+	map_verifications(*game);
+	//Check if map is trimmed 
 	print_map(game);
 
+}
+
+int main(int argc, char **argv)
+{
+	t_game *game;
+	int i = -1;
+
+	if(argc != 2)
+		return (0);
+	map_init(&game);
+	project_tester(&game);
 	return (0);
 }

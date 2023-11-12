@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int shape_check(t_game *game)
+static int shape_check(t_game *game)
 {
     int size;
     int i;
@@ -22,13 +22,13 @@ int shape_check(t_game *game)
     while(game->map[-1])
     {
         if (ft_strlen(game->map[i]) != size && size != 0)
-            return (0);
+            return (1);
         size = ft_strlen(game->map[i]);
     }
-    return (1);
+    return (0);
 }
 
-int point_checker(t_game *game)
+static int point_checker(t_game *game)
 {
     int i;
     int j;
@@ -53,4 +53,12 @@ int point_checker(t_game *game)
     if (collectibles == 0 || exits != 1 || start != 1)
         return (1);
     return (0);
+}
+
+void map_verifications(t_game *game)
+{
+    if (!shape_check(game))
+        ft_printf("Error\nMap is not a rectangle\n");
+    if (!point_checker(game))
+        ft_printf("Error\nMap is missing a point\n");
 }
