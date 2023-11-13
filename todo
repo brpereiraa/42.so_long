@@ -1,3 +1,6 @@
-# Running function for verifications
-# Flood Fill
-#
+Verifications:
+	Flood Fill
+	Empty Line In Middle Of Map
+
+Window:
+	Load Image to window

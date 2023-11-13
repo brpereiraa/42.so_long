@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/12 16:31:46 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/13 03:08:17 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ typedef struct	s_vars {
 }				t_vars;
 
 typedef struct s_game {
-	size_t rows;
-	size_t columns;
+	size_t	rows;
+	size_t	columns;
+	size_t	start;
+	size_t	exit;
+	size_t	collectibles;
 	char	**map;
 }				t_game;
 

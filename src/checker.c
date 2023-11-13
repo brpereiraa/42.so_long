@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/11/12 19:11:17 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/13 03:15:43 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,26 @@ static int shape_check(t_game *game)
     return (0);
 }
 
-static int point_checker(t_game *game)
+static int point_checker(t_game **game)
 {
     int i;
     int j;
-    int collectibles;
-    int exits;
-    int start;
 
-    collectibles = 0;
-    exits = 0;
-    start = 0;
     i = -1;
-    while(game->map[++i])
+    while((*game)->map[++i])
     {
         j = -1;
-        while(game->map[i][++j])
+        while((*game)->map[i][++j])
         {
-            if (game->map[i][j] == 'C')
-                collectibles++;
-            if (game->map[i][j] == 'E')
-                exits++;
-            if (game->map[i][j] == 'P')
-                start++;
+            if ((*game)->map[i][j] == 'C')
+                (*game)->collectibles++;
+            if ((*game)->map[i][j] == 'E')
+                (*game)->exit++;
+            if ((*game)->map[i][j] == 'P')
+                (*game)->start++;
         }
     }
-    if (collectibles == 0 || exits != 1 || start != 1)
+    if ((*game)->collectibles == 0 || (*game)->exit != 1 || (*game)->start++ != 1)
         return (1);
     return (0);
 }
@@ -61,7 +55,7 @@ static int point_checker(t_game *game)
 void map_verifications(t_game *game)
 {
     if (shape_check(game))
-        ft_printf("Error\nMap is not a rectangle\n");
-    if (point_checker(game))
-        ft_printf("Error\nMap is missing a point\n");
+        ft_printf("Error:\nMap is not a rectangle\n");
+    if (point_checker(&game))
+        ft_printf("Error:\nMap is missing a point\n");
 }
