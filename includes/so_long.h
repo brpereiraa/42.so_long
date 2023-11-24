@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/13 03:08:17 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/21 15:38:36 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <X11/X.h>
 # include <fcntl.h>
 
+# define TILES_SIZE 64
+
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
@@ -31,12 +33,19 @@ typedef struct	s_data {
 	int		height;
 }				t_data;
 
+typedef struct s_image {
+	void	*player1;
+	void	*wall;
+	void	*grass;
+}				t_image;
+
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 }				t_vars;
 
 typedef struct s_game {
+	struct s_image  sprites;
 	size_t	rows;
 	size_t	columns;
 	size_t	start;
@@ -51,5 +60,6 @@ void	read_map(t_game **game, char *map);
 void	cols_size(t_game **game, char *map);
 void	rows_size(t_game **game, char *map);
 void 	map_verifications(t_game *game);
+void	open_image(t_game **game, t_vars *vars);
 
 #endif

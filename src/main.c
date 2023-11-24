@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/13 03:42:14 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/21 16:36:24 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,8 @@
 // 	mlx_loop(vars.mlx);
 // }
 
-static void game_init(t_game **game, t_vars **vars, t_data **data)
+static void game_hooks(t_game **game, t_vars **vars, t_data **data)
 {
-	*vars = (t_vars *)malloc(sizeof(t_vars));
-	*data = (t_data *)malloc(sizeof(t_data));
-
-	(*vars)->mlx = mlx_init();
- 	(*vars)->win = mlx_new_window((*vars)->mlx, 1920, 1080, "so_long");
 	// (*data)->img = mlx_xpm_file_to_image((*vars)->mlx, PLAYER_1, (*data)->width, (*data)->width);
 	mlx_hook((*vars)->win, 17, 1L << 2, close_window, vars);
 	mlx_hook((*vars)->win, 2, 1L << 0, key_handler, vars);
@@ -77,11 +72,16 @@ int main(int argc, char **argv)
 	t_data *data;
 	int i = -1;
 
+	vars = (t_vars *)malloc(sizeof(t_vars));
+	data = (t_data *)malloc(sizeof(t_data));
 	if(argc != 2)
 		return (0);
 	map_init(&game, argv);
 	map_verifications(game);
-	game_init(&game, &vars, &data);
+	vars->mlx = mlx_init();
+ 	vars->win = mlx_new_window(vars->mlx, TILES_SIZE * game->rows, TILES_SIZE * game->columns, "so_long");
+	open_image(&game, vars);
+	game_hooks(&game, &vars, &data);
 	print_map(game);
 	return (0);
 }

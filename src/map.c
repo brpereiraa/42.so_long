@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 01:57:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/12 18:45:43 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:16:37 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void cols_size(t_game **game, char *map)
 {
 	int	fd;
 
-	(*game)->columns = 0;
 	fd = open(map, O_RDONLY);
-	while (get_next_line(fd))
-		(*game)->columns++;
+	(*game)->rows = ft_strlen(get_next_line(fd));
 	close(fd);
 } 
 
@@ -57,9 +55,9 @@ void rows_size(t_game **game, char *map)
 {
 	int	fd;
 
-	(*game)->rows = 0;
+	(*game)->columns = 0;
 	fd = open(map, O_RDONLY);
 	while (get_next_line(fd))
-		(*game)->rows++;
+		(*game)->columns++;
 	close(fd);
 }
