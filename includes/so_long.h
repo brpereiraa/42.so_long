@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/24 11:32:44 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:42:28 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,16 @@ typedef struct	s_vars {
 	void	*win;
 }				t_vars;
 
+typedef struct	s_player {
+	size_t	curr_x;
+	size_t	curr_y;
+	size_t	prev_x;
+	size_t	prev_y;
+}				t_player;
+
 typedef struct s_game {
-	struct s_image  sprites;
+	struct	s_player player;
+	struct	s_image  sprites;
 	size_t	rows;
 	size_t	columns;
 	size_t	start;
@@ -57,11 +65,12 @@ typedef struct s_game {
 }				t_game;
 
 int		close_window(void);
-int		key_handler(int keycode);
+int		key_handler(t_game **game, int keycode);	
 void	read_map(t_game **game, char *map);
 void	cols_size(t_game **game, char *map);
 void	rows_size(t_game **game, char *map);
 void 	map_verifications(t_game *game);
 void	open_image(t_game **game, t_vars *vars);
+void	get_player(t_game **game, t_vars *vars);
 
 #endif

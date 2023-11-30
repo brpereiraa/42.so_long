@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/24 11:54:12 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:05:50 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int main(int argc, char **argv)
 	vars->mlx = mlx_init();
  	vars->win = mlx_new_window(vars->mlx, TILES_SIZE * game->rows, TILES_SIZE * game->columns, "so_long");
 	open_image(&game, vars);
+	get_player(&game, vars);
 	game_hooks(&game, &vars, &data);
+	printf("dwdwa\n");
 	print_map(game);
 	return (0);
 }
