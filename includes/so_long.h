@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/30 12:02:05 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:34:18 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ typedef struct	s_player {
 typedef struct s_game {
 	struct	s_player	player;
 	struct	s_image		sprites;
-	struct	s_vars		*vars;
-	void	*mlx;
-	void	*win;
+	void				*mlx;
+	void				*win;
 	size_t				rows;
 	size_t				columns;
 	size_t				start;
