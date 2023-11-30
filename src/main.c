@@ -6,17 +6,17 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/30 11:05:50 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:48:16 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void game_hooks(t_game **game, t_vars **vars, t_data **data)
+static void game_hooks(t_game **game, t_data **data)
 {
-	mlx_hook((*vars)->win, 17, 1L << 2, close_window, vars);
-	mlx_hook((*vars)->win, 2, 1L << 0, key_handler, vars);
-	mlx_loop((*vars)->mlx);
+	mlx_hook((*game)->win, 17, 1L << 2, close_window, (*game)->vars);
+	mlx_hook((*game)->win, 2, 1L << 0, key_handler, game);
+	mlx_loop((*game)->mlx);
 }
 
 static void map_init(t_game **game, char **argv)
@@ -44,22 +44,19 @@ static void print_map(t_game *game)
 int main(int argc, char **argv)
 {
 	t_game *game;
-	t_vars *vars;
 	t_data *data;
 	int i = -1;
 
-	vars = (t_vars *)malloc(sizeof(t_vars));
 	data = (t_data *)malloc(sizeof(t_data));
 	if(argc != 2)
 		return (0);
 	map_init(&game, argv);
 	map_verifications(game);
-	vars->mlx = mlx_init();
- 	vars->win = mlx_new_window(vars->mlx, TILES_SIZE * game->rows, TILES_SIZE * game->columns, "so_long");
-	open_image(&game, vars);
-	get_player(&game, vars);
-	game_hooks(&game, &vars, &data);
-	printf("dwdwa\n");
+	game->mlx = mlx_init();
+ 	game->win = mlx_new_window(game->mlx, TILES_SIZE * game->columns, TILES_SIZE * game->rows, "so_long");
+	open_image(&game);
+	get_player(&game);
+	game_hooks(&game, &data);
 	print_map(game);
 	return (0);
 }

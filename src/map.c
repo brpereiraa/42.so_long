@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 01:57:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/24 12:19:02 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:41:03 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void read_map(t_game **game, char *map)
 
     fd = open(map, O_RDONLY);
 	i = -1;
-	(*game)->map = (char **)malloc(sizeof(char *) * (*game)->columns + 1);
-	while(++i < (*game)->columns)
+	(*game)->map = (char **)malloc(sizeof(char *) * (*game)->rows + 1);
+	while(++i < (*game)->rows)
 		(*game)->map[i] = get_next_line(fd);
 	(*game)->map[i] = NULL;
     close(fd);
@@ -47,7 +47,7 @@ void cols_size(t_game **game, char *map)
 	int	fd;
 
 	fd = open(map, O_RDONLY);
-	(*game)->rows = ft_strlen(get_next_line(fd)) - 1;
+	(*game)->columns = ft_strlen(get_next_line(fd)) - 1;
 	close(fd);
 } 
 
@@ -55,9 +55,9 @@ void rows_size(t_game **game, char *map)
 {
 	int	fd;
 
-	(*game)->columns = 0;
+	(*game)->rows = 0;
 	fd = open(map, O_RDONLY);
 	while (get_next_line(fd))
-		(*game)->columns++;
+		(*game)->rows++;
 	close(fd);
 }
