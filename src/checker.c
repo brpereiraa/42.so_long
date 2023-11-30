@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/11/13 03:15:43 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/24 12:18:33 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ static int point_checker(t_game **game)
 void map_verifications(t_game *game)
 {
     if (shape_check(game))
+    {
         ft_printf("Error:\nMap is not a rectangle\n");
+        exit (1);
+    }
     if (point_checker(&game))
+    {
         ft_printf("Error:\nMap is missing a point\n");
+        exit (1);
+    }
 }

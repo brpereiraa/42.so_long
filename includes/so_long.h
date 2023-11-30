@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/21 15:38:36 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/11/24 11:32:44 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <X11/X.h>
 # include <fcntl.h>
 
-# define TILES_SIZE 64
+# define TILES_SIZE 50
 
 typedef struct	s_data {
 	void	*img;
@@ -37,6 +37,8 @@ typedef struct s_image {
 	void	*player1;
 	void	*wall;
 	void	*grass;
+	void	*collectible;
+	void	*exit;
 }				t_image;
 
 typedef struct	s_vars {
