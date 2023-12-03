@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/11/24 12:18:33 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:54:21 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static int point_checker(t_game **game)
         {
             if ((*game)->map[i][j] == 'C')
                 (*game)->collectibles++;
-            if ((*game)->map[i][j] == 'E')
+            else if ((*game)->map[i][j] == 'E')
                 (*game)->exit++;
-            if ((*game)->map[i][j] == 'P')
+            else if ((*game)->map[i][j] == 'P')
                 (*game)->start++;
+            else if ((*game)->map[i][j] != '0' && (*game)->map[i][j] != '1')
+                return (1);
         }
     }
     if ((*game)->collectibles == 0 || (*game)->exit != 1 || (*game)->start++ != 1)
@@ -64,4 +66,7 @@ void map_verifications(t_game *game)
         ft_printf("Error:\nMap is missing a point\n");
         exit (1);
     }
+	get_player(&game);
+    flood_fill(game);
+
 }

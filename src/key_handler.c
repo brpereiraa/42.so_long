@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/03 14:59:25 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/03 16:03:29 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,17 @@ int key_handler(int keycode, t_game **game)
 	(*game)->player.prev_y = (*game)->player.curr_y;
 	if (keycode == W || keycode == UP)
 		(*game)->player.curr_y--;
-	if (keycode == S || keycode == DOWN)
+	else if (keycode == S || keycode == DOWN)
 		(*game)->player.curr_y++;
-	if (keycode == D || keycode == RIGHT)
+	else if (keycode == D || keycode == RIGHT)
 		(*game)->player.curr_x++;
-	if (keycode == A || keycode == LEFT)
+	else if (keycode == A || keycode == LEFT)
 		(*game)->player.curr_x--;
+	else {
+		(*game)->player.curr_y = (*game)->player.prev_y;
+		(*game)->player.curr_x = (*game)->player.prev_x;
+		return (0);
+	}
 	if ((*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] == '1')
 	{
 		(*game)->player.curr_y = (*game)->player.prev_y;
