@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/05 17:19:51 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/05 21:27:30 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,24 +107,24 @@ void map_verifications(t_game *game)
 
     i = -1;
     if (shape_check(game))
-        exit (1);
+        free_game(&game, 1);
     if (point_checker(&game))
-        free_game(&game);
+        free_game(&game, 1);
     if (wall_check(game)){
         ft_printf("Map not surrounded by walls\n");
-        free_game(&game);
+        free_game(&game, 1);
     }
 	get_player(&game);
     map_test = ft_calloc(game->rows + 1, sizeof(char *));
     if (!map_test)
-        free_game(&game);
+        free(map_test);
     while (++i < game->rows)
 		map_test[i] = ft_strdup(game->map[i]);
     if (!flood_fill(game->collectibles, game->player.curr_x, game->player.curr_y, map_test))
     {
         ft_printf("No possible exit\n");
         free_map(map_test);
-        free_game(&game);
+        free_game(&game, 1);
     }
     free_map(map_test);
 }

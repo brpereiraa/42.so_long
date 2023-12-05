@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/05 17:22:42 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/05 21:29:59 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int main(int argc, char **argv)
 	map_verifications(game);
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		free_game(&game);
+		free_game(&game, 2);
  	game->win = mlx_new_window(game->mlx, TILES_SIZE * game->columns, TILES_SIZE * game->rows, "so_long");
 	if (!game->win)
-		free_game(&game);
+		free_game(&game, 2);
 	open_image(&game);
 	get_player(&game);
 	game_hooks(&game);

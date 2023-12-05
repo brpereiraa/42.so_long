@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/05 12:16:52 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 21:44:09 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void move_check(t_game **game)
 		(*game)->collectibles--;
 	if ((*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] == 'E' && !(*game)->collectibles){
 		printf("You won");
-		exit(1);
+		free_game(game, 3);
 	}
 	if ((*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] == 'E')
 		flag = 1;
@@ -44,7 +44,7 @@ static void move_check(t_game **game)
 int key_handler(int keycode, t_game **game)
 {
 	if(keycode == ESC){
-		free_game(game);
+		free_game(game, 3);
 		exit(EXIT_SUCCESS);
 	}
 	(*game)->player.prev_x = (*game)->player.curr_x;

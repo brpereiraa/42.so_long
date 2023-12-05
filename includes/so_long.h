@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/05 17:15:12 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/05 20:49:34 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ void 	map_verifications(t_game *game);
 void	open_image(t_game **game);
 void	get_player(t_game **game);
 void	put_image(t_game **game);
-void	free_game(t_game **game);
+void	free_game(t_game **game, int flag);
+void	free_sprites(t_game **game);
+void	free_mlx(t_game **game);
 void	free_map(char	**map);
 
 
