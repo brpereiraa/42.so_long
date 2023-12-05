@@ -6,7 +6,7 @@
 /*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 01:57:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/05 21:45:28 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/05 22:36:13 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,12 @@ void cols_size(t_game **game, char *map)
 		exit(EXIT_FAILURE);
 	str = get_next_line(fd);
 	if (!str || !str[0])
+	{
 		free(str);
-	(*game)->columns = ft_strlen(str) - 1;
+		free(*game);
+		exit(1);
+	}
+	(*game)->columns = ft_strlen(str);
 	free(str);
 	close(fd);
 } 
