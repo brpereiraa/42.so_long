@@ -6,13 +6,13 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/03 16:54:02 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:00:42 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void game_hooks(t_game **game, t_data **data)
+static void game_hooks(t_game **game)
 {
 	mlx_hook((*game)->win, 17, 1L << 2, close_window, game);
 	mlx_hook((*game)->win, 2, 1L << 0, key_handler, game);
@@ -44,19 +44,19 @@ static void print_map(t_game *game)
 int main(int argc, char **argv)
 {
 	t_game *game;
-	t_data *data;
 	int i = -1;
 
-	data = (t_data *)malloc(sizeof(t_data));
 	if(argc != 2)
 		return (0);
 	map_init(&game, argv);
 	map_verifications(game);
+	while (++i < game->rows)
+		printf("lines: %s\n", game->map[i]);
 	game->mlx = mlx_init();
  	game->win = mlx_new_window(game->mlx, TILES_SIZE * game->columns, TILES_SIZE * game->rows, "so_long");
 	open_image(&game);
 	get_player(&game);
-	game_hooks(&game, &data);
+	game_hooks(&game);
 	print_map(game);
 	return (0);
 }

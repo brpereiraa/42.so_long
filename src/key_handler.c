@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/03 16:03:29 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 09:38:16 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	close_window(void)
 static void move_check(t_game **game)
 {
 	static int	flag;
+	static int	i;
 
 	if ((*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] == 'C')
 		(*game)->collectibles--;
@@ -37,6 +38,7 @@ static void move_check(t_game **game)
 	if (flag == 1)
 		flag = 2;
 	(*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] = 'P';
+	ft_printf("%i\n", ++i);
 }
 
 int key_handler(int keycode, t_game **game)
@@ -53,17 +55,14 @@ int key_handler(int keycode, t_game **game)
 		(*game)->player.curr_x++;
 	else if (keycode == A || keycode == LEFT)
 		(*game)->player.curr_x--;
-	else {
-		(*game)->player.curr_y = (*game)->player.prev_y;
-		(*game)->player.curr_x = (*game)->player.prev_x;
+	else 
 		return (0);
-	}
 	if ((*game)->map[(*game)->player.curr_y][(*game)->player.curr_x] == '1')
 	{
 		(*game)->player.curr_y = (*game)->player.prev_y;
 		(*game)->player.curr_x = (*game)->player.prev_x;
 		return (0);
-	} 
+	}
 	move_check(game);
 	put_image(game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 01:57:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/30 16:41:03 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:01:08 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void cols_size(t_game **game, char *map)
 	int	fd;
 
 	fd = open(map, O_RDONLY);
+	if(fd == -1)
+		exit(EXIT_FAILURE);
 	(*game)->columns = ft_strlen(get_next_line(fd)) - 1;
 	close(fd);
 } 
@@ -57,6 +59,8 @@ void rows_size(t_game **game, char *map)
 
 	(*game)->rows = 0;
 	fd = open(map, O_RDONLY);
+	if(fd == -1)
+		exit(EXIT_FAILURE);
 	while (get_next_line(fd))
 		(*game)->rows++;
 	close(fd);
