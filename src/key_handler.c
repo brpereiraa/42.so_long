@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/05 09:38:16 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:16:52 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void move_check(t_game **game)
 
 int key_handler(int keycode, t_game **game)
 {
-	if(keycode == ESC)
+	if(keycode == ESC){
+		free_game(game);
 		exit(EXIT_SUCCESS);
+	}
 	(*game)->player.prev_x = (*game)->player.curr_x;
 	(*game)->player.prev_y = (*game)->player.curr_y;
 	if (keycode == W || keycode == UP)

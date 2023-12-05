@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:51:05 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/05 11:40:44 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:51:01 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ static char	*str_rest(char *str)
 	char	*temp;
 	char	*start;
 
-	if (!*str)
-	{
-		free(str);
-		return (NULL);
-	}
 	start = str;
 	while (*str && *str != '\n')
 		str++;
@@ -60,6 +55,10 @@ static char	*str_rest(char *str)
 	while (i-- > 0)
 		temp[i] = str[i];
 	free(start);
+	if(temp[0] == 0){
+		free(temp);
+		temp = 0;
+	}
 	return (temp);
 }
 

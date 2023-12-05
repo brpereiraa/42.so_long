@@ -6,27 +6,11 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/05 10:25:35 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:29:30 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void free_game(t_game **game)
-{
-	int	i;
-
-	i = -1;
-	if((*game)->map)
-	{
-		while((*game)->map[++i]){
-			free((*game)->map[i]);
-		}
-		free((*game)->map);
-	}
-	free(*game);
-	exit (1);
-}
 
 static void game_hooks(t_game **game)
 {
@@ -48,15 +32,6 @@ static void map_init(t_game **game, char **argv)
 	read_map(game, argv[1]);
 }
 
-static void print_map(t_game *game)
-{
-	int	i;
-
-	i = -1;
-	while(game->map[++i])
-		ft_printf("Line %i: %s\n", i, game->map[i]);
-}
-
 int main(int argc, char **argv)
 {
 	t_game *game;
@@ -66,13 +41,10 @@ int main(int argc, char **argv)
 		return (0);
 	map_init(&game, argv);
 	map_verifications(game);
-	while (++i < game->rows)
-		printf("lines: %s\n", game->map[i]);
 	game->mlx = mlx_init();
  	game->win = mlx_new_window(game->mlx, TILES_SIZE * game->columns, TILES_SIZE * game->rows, "so_long");
 	open_image(&game);
 	get_player(&game);
 	game_hooks(&game);
-	print_map(game);
 	return (0);
 }
