@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/11/30 18:34:18 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:18:21 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void 	map_verifications(t_game *game);
 void	open_image(t_game **game);
 void	get_player(t_game **game);
 void	put_image(t_game **game);
+void	free_game(t_game **game);
 
 #endif

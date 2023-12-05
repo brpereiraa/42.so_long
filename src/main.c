@@ -6,11 +6,27 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:06:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/05 10:00:42 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:25:35 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void free_game(t_game **game)
+{
+	int	i;
+
+	i = -1;
+	if((*game)->map)
+	{
+		while((*game)->map[++i]){
+			free((*game)->map[i]);
+		}
+		free((*game)->map);
+	}
+	free(*game);
+	exit (1);
+}
 
 static void game_hooks(t_game **game)
 {

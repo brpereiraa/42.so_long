@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:50:51 by brpereir          #+#    #+#             */
-/*   Updated: 2023/06/16 10:01:31 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/05 11:40:24 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
