@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/05 12:35:09 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:19:51 by brunolopes       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,16 @@ void map_verifications(t_game *game)
         free_game(&game);
     }
 	get_player(&game);
-    map_test = ft_calloc(game->rows, sizeof(char *));
+    map_test = ft_calloc(game->rows + 1, sizeof(char *));
+    if (!map_test)
+        free_game(&game);
     while (++i < game->rows)
 		map_test[i] = ft_strdup(game->map[i]);
     if (!flood_fill(game->collectibles, game->player.curr_x, game->player.curr_y, map_test))
     {
         ft_printf("No possible exit\n");
+        free_map(map_test);
         free_game(&game);
     }
-    i = -1;
-    if(map_test != NULL)
-    {
-        while(map_test[++i])
-            free(map_test[i]);
-        free(map_test);
-    }
+    free_map(map_test);
 }
