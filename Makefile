@@ -6,13 +6,13 @@
 #    By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 09:44:26 by brunolopes        #+#    #+#              #
-#    Updated: 2023/12/05 12:10:55 by brpereir         ###   ########.fr        #
+#    Updated: 2023/12/07 10:22:04 by brpereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc -g
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 RM = rm -fr
 
