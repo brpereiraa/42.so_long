@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:31:22 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/07 10:50:35 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:20:34 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,18 @@ void	get_player(t_game **game)
 		}
 		i++;
 	}
+}
+
+char	**dup_map(t_game *game)
+{
+	char	**map_test;
+	size_t	i;
+
+	i = -1;
+	map_test = ft_calloc(game->rows + 1, sizeof(char *));
+	if (!map_test)
+		free(map_test);
+	while (++i < game->rows)
+		map_test[i] = ft_strdup(game->map[i]);
+	return (map_test);
 }

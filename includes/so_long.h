@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/05 20:49:34 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/07 17:18:20 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_game {
 	char				**map;
 }				t_game;
 
-int		close_window(void);
+int		close_window(t_game **game);
 int		key_handler(int keycode, t_game **game);	
 void	read_map(t_game **game, char *map);
 void	cols_size(t_game **game, char *map);
@@ -74,6 +74,6 @@ void	free_game(t_game **game, int flag);
 void	free_sprites(t_game **game);
 void	free_mlx(t_game **game);
 void	free_map(char	**map);
-
+char	**dup_map(t_game *game);
 
 #endif

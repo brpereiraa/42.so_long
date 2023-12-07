@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 01:57:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/07 10:34:21 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:08:02 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,12 @@ void	rows_size(t_game **game, char *map)
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
-	while ((str = get_next_line(fd)))
+	str = get_next_line(fd);
+	while (str)
 	{
 		(*game)->rows++;
 		free(str);
+		str = get_next_line(fd);
 	}
 	close(fd);
 }

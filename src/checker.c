@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/07 10:48:01 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:20:19 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ static int	point_checker(t_game **game)
 				return (1);
 		}
 	}
-	if ((*game)->collectibles == 0 || (*game)->exit != 1 || (*game)->start++ != 1)
-	{
-		ft_printf("Error:\nWrong number of points or incorrect characters\n");
+	if ((*game)->collectibles == 0 || (*game)->exit != 1 
+		|| (*game)->start++ != 1)
 		return (1);
-	}
 	return (0);
 }
 
@@ -89,7 +87,7 @@ static int	flood_fill(int total_coins, int x, int y, char **map)
 		return (0);
 	if (map[y][x] == 'C')
 		collectibles++;
-	if (map[y][x] ==  'E')
+	if (map[y][x] == 'E')
 		exit++;
 	map[y][x] = '1';
 	flood_fill(total_coins, x - 1, y, map);
@@ -104,24 +102,23 @@ static int	flood_fill(int total_coins, int x, int y, char **map)
 void	map_verifications(t_game *game)
 {
 	char	**map_test;
-	size_t	i;
 
-	i = -1;
 	if (shape_check(game))
 		free_game(&game, 1);
 	if (point_checker(&game))
+	{
+		ft_printf("Error:\nWrong number of points or incorrect characters\n");
 		free_game(&game, 1);
-	if (wall_check(game)){
+	}
+	if (wall_check(game))
+	{
 		ft_printf("Map not surrounded by walls\n");
 		free_game(&game, 1);
 	}
 	get_player(&game);
-	map_test = ft_calloc(game->rows + 1, sizeof(char *));
-	if (!map_test)
-		free(map_test);
-	while (++i < game->rows)
-		map_test[i] = ft_strdup(game->map[i]);
-	if (!flood_fill(game->collectibles, game->player.curr_x, game->player.curr_y, map_test))
+	map_test = dup_map(game);
+	if (!flood_fill(game->collectibles, game->player.curr_x, 
+			game->player.curr_y, map_test))
 	{
 		ft_printf("No possible exit\n");
 		free_map(map_test);

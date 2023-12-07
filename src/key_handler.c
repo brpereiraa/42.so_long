@@ -6,14 +6,15 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:34:47 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/07 10:40:11 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:18:03 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	close_window(void)
+int	close_window(t_game **game)
 {
+	free_game(game, 3);
 	exit (EXIT_SUCCESS);
 }
 
