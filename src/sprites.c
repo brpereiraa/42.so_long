@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:31:22 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/07 10:45:22 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:50:35 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	get_player(t_game **game)
 				(*game)->player.prev_x = j;
 				(*game)->player.prev_y = i;
 			}
-			i++;
 		}
+		i++;
 	}
 }
