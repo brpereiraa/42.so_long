@@ -15,13 +15,13 @@
 static int	shape_check(t_game *game)
 {
 	size_t	size;
-	size_t	i;
+	int	i;
 
 	i = -1;
-	size = -1;
+	size = 1;
 	while (game->map[++i])
 	{
-		if (ft_strlen(game->map[i]) != size && size <= 0)
+		if (ft_strlen(game->map[i]) != size && size != 1)
 		{
 			ft_printf("Error:\nMap is not a rectangle\n");
 			return (1);
