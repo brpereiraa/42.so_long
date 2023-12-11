@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:23:19 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/12/07 17:18:20 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:39:03 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 
 # define TILES_SIZE 50
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int 	width;
+	int		width;
 	int		height;
 }				t_data;
 
@@ -41,7 +41,7 @@ typedef struct s_image {
 	void	*exit;
 }				t_image;
 
-typedef struct	s_player {
+typedef struct s_player {
 	size_t	curr_x;
 	size_t	curr_y;
 	size_t	prev_x;
@@ -49,8 +49,8 @@ typedef struct	s_player {
 }				t_player;
 
 typedef struct s_game {
-	struct	s_player	player;
-	struct	s_image		sprites;
+	struct s_player		player;
+	struct s_image		sprites;
 	void				*mlx;
 	void				*win;
 	size_t				rows;
@@ -66,7 +66,7 @@ int		key_handler(int keycode, t_game **game);
 void	read_map(t_game **game, char *map);
 void	cols_size(t_game **game, char *map);
 void	rows_size(t_game **game, char *map);
-void 	map_verifications(t_game *game);
+void	map_verifications(t_game *game);
 void	open_image(t_game **game);
 void	get_player(t_game **game);
 void	put_image(t_game **game);

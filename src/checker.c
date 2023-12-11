@@ -6,7 +6,7 @@
 /*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:10 by brpereir          #+#    #+#             */
-/*   Updated: 2023/12/07 17:20:19 by brpereir         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:37:53 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	shape_check(t_game *game)
 {
 	size_t	size;
-	int	i;
+	int		i;
 
 	i = -1;
 	size = 1;

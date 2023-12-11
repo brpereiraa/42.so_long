@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_map.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunolopes <brunolopes@student.42.fr>      +#+  +:+       +#+        */
+/*   By: brpereir <brpereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:20:47 by brunolopes        #+#    #+#             */
-/*   Updated: 2023/06/23 11:20:47 by brunolopes       ###   ########.fr       */
+/*   Updated: 2023/12/11 19:41:45 by brpereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # define DOWN 65364
 # define RIGHT 65363
 
-# define FLOOR '0'
-# define WALL '1'
-# define PLAYER 'P'
-# define COLLECTIBLE 'C'
-# define EXIT 'E'
+# define FLOOR 048
+# define WALL 049
+# define PLAYER 080
+# define COLLECTIBLE 067
+# define EXIT 069
 
 #endif
