@@ -80,9 +80,7 @@ static int	flood_fill(int total_coins, int x, int y, char **map)
 {
 	static int	collectibles;
 	static int	exit;
-	size_t		i;
 
-	i = -1;
 	if (map[y][x] == '1')
 		return (0);
 	if (map[y][x] == 'C')
